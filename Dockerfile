@@ -36,7 +36,7 @@ COPY patches/sharelatex/web/app/src/Features/Authentication/AuthenticationContro
 COPY patches/sharelatex/web/app/src/Features/Authentication/AuthenticationManager.js /var/www/sharelatex/web/app/src/Features/Authentication/AuthenticationManager.js
 
 # copy the patched Language detection part 
-COPY patches/Translations.js /var/www/sharelatex/web/app/src/infrastructure/Translations.js
+COPY patches/sharelatex/web/app/src/infrastructure/Translations.js /var/www/sharelatex/web/app/src/infrastructure/Translations.js
 
 # locale corrections
 COPY locales/de.json /var/www/sharelatex/web/locales/de.json
