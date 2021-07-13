@@ -60,7 +60,7 @@ const AuthenticationController = {
     // so we can send back our custom `{message: {text: "", type: ""}}` responses on failure,
     // and send a `{redir: ""}` response on success
     passport.authenticate('local', function(err, user, info) {
-      logger.info('post-password-auth Hallo')
+      logger.info('post-password-auth:', err)
       if (err) {
         return next(err)
       }
@@ -211,12 +211,24 @@ const AuthenticationController = {
 
     logger.log('username='+email)
 
-    // error output
-    //return res.redirect('/')
+    // extract the first/last name from header
+    if (process.env.REMOTE_LASTNAME != null){
+      last_name = req.headers[process.env.REMOTE_LASTNAME]
+    }
+    else
+    {
+      last_name = undefined
+    }
+    if (process.env.REMOTE_FIRSTNAME != null) {
+      first_name = req.headers[process.env.REMOTE_FIRSTNAME]
+    }
+    else {
+      first_name = undefined
+    }
 
     // use the special authenticte function
     // unknown users will be created automatically
-    AuthenticationManager.authenticate_shib({ email }, password, function (
+    AuthenticationManager.authenticate_shib({ email }, password, first_name, last_name, function (
       error,
       user
     ) {

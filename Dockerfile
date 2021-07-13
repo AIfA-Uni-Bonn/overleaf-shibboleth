@@ -30,7 +30,9 @@ RUN tlmgr install collection-publishers
 RUN tlmgr install collection-xetex
 
 # copy the Shibboleth modifications
+COPY patches/sharelatex/web/app/views/layout/navbar.pug /var/www/sharelatex/web/app/views/layout/navbar.pug
 COPY patches/sharelatex/web/app/views/user/login.pug /var/www/sharelatex/web/app/views/user/login.pug
+COPY patches/sharelatex/web/app/views/user/settings.pug /var/www/sharelatex/web/app/views/user/settings.pug
 COPY patches/sharelatex/web/app/src/router.js /var/www/sharelatex/web/app/src/router.js
 COPY patches/sharelatex/web/app/src/Features/Authentication/AuthenticationController.js /var/www/sharelatex/web/app/src/Features/Authentication/AuthenticationController.js
 COPY patches/sharelatex/web/app/src/Features/Authentication/AuthenticationManager.js /var/www/sharelatex/web/app/src/Features/Authentication/AuthenticationManager.js
@@ -40,6 +42,7 @@ COPY patches/sharelatex/web/app/src/infrastructure/Translations.js /var/www/shar
 
 # locale corrections
 COPY locales/de.json /var/www/sharelatex/web/locales/de.json
+COPY locales/en.json /var/www/sharelatex/web/locales/en.json
 
 
 ## install the wrapper
