@@ -1,0 +1,4 @@
+$pdflatex = 'timeout_fix pdflatex';
+$latex = 'timeout_fix latex';
+$xelatex = 'timeout_fix xelatex';
+$lualatex = 'timeout_fix lualatex';

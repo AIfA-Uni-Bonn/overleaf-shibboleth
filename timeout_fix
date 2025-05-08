@@ -1,0 +1,11 @@
+#!/bin/sh
+
+if [ -z "${TEX_TIMEOUT}" ]; then
+  TEX_TIMEOUT=120
+fi
+
+timeout ${TEX_TIMEOUT} $*
+
+res=$?
+
+exit ${res}
